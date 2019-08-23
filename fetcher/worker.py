@@ -31,8 +31,7 @@ def init_logger(name):
 
 class TwitterClient:
 	def __init__(self, consumer_key, consumer_secret, access_token_key, access_token_secret, count_per_search=15):
-		self.api = twitter.Api(consumer_key, consumer_secret, access_token_key, access_token_secret,
-							   tweet_mode='extended')
+		self.api = twitter.Api(consumer_key, consumer_secret, access_token_key, access_token_secret, tweet_mode='extended')
 		self.count = count_per_search
 		self.logger = init_logger('TwitterClient')
 
