@@ -8,12 +8,18 @@ services:
     environment:
       MONGO_INITDB_DATABASE: tweet_classify
 
+  messagery:
+    image: rabbitmq:3.7-management
+    ports:
+      - 15672:15672
+
   fetcher:
     build: ./fetcher
     env_file:
       - .env
     depends_on:
       - database
+      - messagery
     volumes:
       - ./fetcher:/fetcher
 

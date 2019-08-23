@@ -1,5 +1,7 @@
 from datetime import datetime, timedelta
 from os import environ
+import rabbitmq
+
 
 from database import Db
 from log import get_logger
@@ -39,3 +41,4 @@ if __name__ == '__main__':
 		db.insert_tweet([tweet.AsDict() for tweet in tweets])
 		if len(tweets) > 0:
 			db.update_term(term, tweets[0])
+			rabbitmq.publish_updated_term(term, tweets[0])
