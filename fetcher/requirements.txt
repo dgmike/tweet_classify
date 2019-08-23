@@ -1,3 +1,4 @@
 python-twitter==3.5
 python-crontab==2.3.8
 croniter==0.3.30
+pymongo==3.9.0

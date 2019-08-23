@@ -3,3 +3,7 @@
 /fetcher/bin
 /fetcher/include
 /fetcher/lib
+
+/supervisor/bin
+/supervisor/include
+/supervisor/lib

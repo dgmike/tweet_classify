@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+  database:
+    image: mongo
+    volumes:
+      - ./database:/docker-entrypoint-initdb.d/
+    environment:
+      MONGO_INITDB_DATABASE: tweet_classify
+
+  fetcher:
+    build: ./fetcher
+    env_file:
+      - .env
+    depends_on:
+      - database
+    volumes:
+      - ./fetcher:/fetcher
+
+  app:
+    build: ./api
+    env_file:
+      - .env
+    depends_on:
+      - database
+    ports:
+      - 8080:8080
