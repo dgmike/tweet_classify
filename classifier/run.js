@@ -4,6 +4,16 @@ const url = `mongodb://${process.env.MONGODB_HOST || 'localhost'}:${process.env.
 const database = `${process.env.MONGODB_DATABASE}`;
 const tweetsCollection = `${process.env.MONGODB_TWEETS_COLLECTION}`;
 
+const connect = async () => {
+  return mongodb.MongoClient.connect(
+    url,
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    }
+  );
+};
+
 const mapFunction = function () {
   const is_retweet = !!this.retweeted_status;
   const tweet = is_retweet ? this.retweeted_status : this;
@@ -31,29 +41,22 @@ const reduceFunction = function (key, values) {
   return reduced_object;
 };
 
-mongodb.MongoClient.connect(url, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(client => {
-    const db = client.db(database);
-    const collection = db.collection(tweetsCollection);
 
-    collection.countDocuments()
-      .then(total => console.log('Total tweets: ', total))
-      .catch(err => {
-        console.warn('Error counting objects\n', err);
-        client.close();
-      })
-      .then(() => {
-        collection
-          .mapReduce(mapFunction, reduceFunction, { out: 'hashtags_by_countries' })
-          .then((hashtags_by_countries) => {
-            console.log('hashtags_by_countries mapReduce finished');
-            hashtags_by_countries.countDocuments()
-              .then(total => console.log('Total hashtags by country: ', total))
-              .catch(err => console.warn('Error counting objects\n', err))
-              .finally(() => client.close());
-          })
-          .catch(err => console.error('Erro ao tentar executar mapReduce\n', err))
-          .finally(() => client.close());
-      });
-  })
-  .catch(err => console.error('Erro ao conectar no banco\n', err));
+const run = async () => {
+  const client = await connect();
+
+  try {
+    const collection = client.db(database).collection(tweetsCollection);
+    console.log(`Total tweets: ${await collection.countDocuments()}`);
+    const resultCollection = await collection.mapReduce(mapFunction, reduceFunction, { out: 'hashtags_by_countries' });
+    console.log(`Total hashtags: ${await resultCollection.countDocuments()}`);
+  } catch (err) {
+    throw new Error(`Error executing process. ${err}`);
+  } finally {
+    await client.close();
+  }
+};
+
+run()
+  .then(() => console.log('Finished.'))
+  .catch((err) => console.error('Error running process.\n', err));
