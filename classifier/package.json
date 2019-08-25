@@ -1,0 +1,16 @@
+{
+  "name": "classifier",
+  "version": "1.0.0",
+  "description": "Classifier is a project to classify tweets on database and summarize reports according required questions, storing information on database.",
+  "main": "index.js",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "mongodb": "^3.3.1"
+  }
+}

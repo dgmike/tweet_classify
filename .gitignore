@@ -9,3 +9,4 @@
 /supervisor/lib
 
 /.env
+/classifier/node_modules
