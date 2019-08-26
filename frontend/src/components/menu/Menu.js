@@ -1,11 +1,14 @@
 import React from 'react';
 import styles from './Menu.module.css';
+import { NavLink } from 'react-router-dom';
 
-const Menu = () => (
-  <>
-    <a href="/" class={styles.link}>Dashboard</a>
-    <a href="/terms" class={styles.link}>Terms</a>
-  </>
-);
+const Menu = ({ match }) => {
+  return (
+    <>
+      <NavLink to="/" exact className={styles.link} activeClassName={styles.active}>Dashboard</NavLink>
+      <NavLink to="/terms" className={styles.link} activeClassName={styles.active}>Terms</NavLink>
+    </>
+  );
+};
 
 export default Menu;

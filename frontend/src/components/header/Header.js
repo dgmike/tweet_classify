@@ -1,10 +1,11 @@
 import React from 'react';
 import styles from './Header.module.css';
+import { Link } from 'react-router-dom';
 
 const Header = () => (
-  <header class={styles.header}>
+  <header className={styles.header}>
     <div>
-      <a href="/">Tweet classify</a>
+      <Link to="/" className={styles.pagename}>Tweet classify</Link>
     </div>
     <div>
       <a href="https://github.com/dgmike/tweet_classify">fork on gthub</a>

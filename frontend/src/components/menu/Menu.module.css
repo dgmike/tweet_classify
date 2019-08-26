@@ -3,7 +3,6 @@
   padding: 1rem;
   text-decoration: none;
   transition: .5s background;
-  border-bottom: 1px solid #e5e5e5;
   color: #333;
 }
 
@@ -11,3 +10,7 @@
   background: #ccc;
 }
 
+.active {
+  padding-left: .5rem;
+  border-left: .5rem solid #ccc;
+}

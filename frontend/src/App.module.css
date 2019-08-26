@@ -1,21 +1,16 @@
-.pagename {
-  font-weight: 600;
-}
-
 .content {
   display: flex;
   align-items: stretch;
-  min-height: calc(100vh - 3rem);
+  min-height: calc(100vh - 4rem);
+  margin-top: 1rem;
 }
 
 .menu {
   display: block;
   width: 16%;
-  background: #eee;
 }
 
 .main {
   flex-grow: 1;
   padding: 0 1rem;
-  background: #f5f5f5;
 }
