@@ -3,12 +3,13 @@ package com.github.dgmike.tweetclassify.api.entities;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection = "terms")
-public class Term {
+@Document(collection = "users_followers")
+public class UsersAndFollowers {
+
 	@Id
 	private String id;
 
-	private String term;
+	private UserAndFollowersValue value;
 
 	public String getId() {
 		return id;
@@ -18,11 +19,11 @@ public class Term {
 		this.id = id;
 	}
 
-	public String getTerm() {
-		return term;
+	public UserAndFollowersValue getValue() {
+		return value;
 	}
 
-	public void setTerm(String term) {
-		this.term = term;
+	public void setValue(UserAndFollowersValue value) {
+		this.value = value;
 	}
 }

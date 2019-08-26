@@ -3,12 +3,11 @@ package com.github.dgmike.tweetclassify.api.entities;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection = "terms")
-public class Term {
+@Document(collection = "tweets_by_hours")
+public class TweetsByHour {
 	@Id
 	private String id;
-
-	private String term;
+	TweetByHourValue value;
 
 	public String getId() {
 		return id;
@@ -18,11 +17,11 @@ public class Term {
 		this.id = id;
 	}
 
-	public String getTerm() {
-		return term;
+	public TweetByHourValue getValue() {
+		return value;
 	}
 
-	public void setTerm(String term) {
-		this.term = term;
+	public void setValue(TweetByHourValue value) {
+		this.value = value;
 	}
 }

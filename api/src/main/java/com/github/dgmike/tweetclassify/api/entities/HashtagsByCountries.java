@@ -3,12 +3,14 @@ package com.github.dgmike.tweetclassify.api.entities;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection = "terms")
-public class Term {
+import java.util.Map;
+
+@Document(value = "hashtags_by_countries")
+public class HashtagsByCountries {
 	@Id
 	private String id;
 
-	private String term;
+	private Map<String, Integer> value;
 
 	public String getId() {
 		return id;
@@ -18,11 +20,12 @@ public class Term {
 		this.id = id;
 	}
 
-	public String getTerm() {
-		return term;
+	public Map<String, Integer> getValue() {
+		return value;
 	}
 
-	public void setTerm(String term) {
-		this.term = term;
+	public void setValue(Map<String, Integer> value) {
+		this.value = value;
 	}
+
 }
