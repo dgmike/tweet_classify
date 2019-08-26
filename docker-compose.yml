@@ -13,6 +13,14 @@ services:
     ports:
       - 15672:15672
 
+  classifier:
+    build: ./classifier
+    env_file:
+      - .env
+    depends_on:
+      - database
+      - messagery
+
   fetcher:
     build: ./fetcher
     env_file:
