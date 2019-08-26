@@ -26,7 +26,7 @@ const listener = async () => {
             }
 
             try {
-              let subprocess = await execa.node('run.js');
+              let subprocess = await execa.node('classify.js');
               console.log(`     ${subprocess.all.replace(/\n/g, '\n     ')}`);
             } catch (err) {
               console.log('Error execuring run.js script\n', err);
