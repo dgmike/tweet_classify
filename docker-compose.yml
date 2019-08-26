@@ -12,6 +12,7 @@ services:
     image: rabbitmq:3.7-management
     ports:
       - 15672:15672
+      - 5672:5672
 
   classifier:
     build: ./classifier
@@ -20,6 +21,8 @@ services:
     depends_on:
       - database
       - messagery
+    volumes:
+      - ./classifier:/classifier
 
   fetcher:
     build: ./fetcher

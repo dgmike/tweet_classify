@@ -42,3 +42,5 @@ if __name__ == '__main__':
 		if len(tweets) > 0:
 			db.update_term(term, tweets[0])
 			rabbitmq.publish_updated_term(term, tweets[0])
+
+	rabbitmq.publish_finished_message()

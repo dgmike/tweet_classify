@@ -5,12 +5,14 @@
   "main": "index.js",
   "private": true,
   "scripts": {
-    "start": "node run.js"
+    "start": "node listener.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "amqplib": "^0.5.5",
+    "execa": "^2.0.4",
     "mongodb": "^3.3.1"
   }
 }
