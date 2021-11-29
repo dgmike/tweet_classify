@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  db:
+    image: mongo
+    environment:
+      MONGO_INITDB_DATABASE: tweets
+    ports:
+      - 27017:27017
+    volumes:
+      - ./mongodb:/docker-entrypoint-initdb.d/

@@ -1,0 +1,8 @@
+spring:
+  data:
+    mongodb:
+      host: ${dbhost:localhost}
+      port: ${dbport:27017}
+      database: ${dbname:tweets}
+      username: ${dbuser:tweets}
+      password: ${dbpass:tweets}
